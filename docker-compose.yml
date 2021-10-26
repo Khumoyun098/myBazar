@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  core:
+    build: .
+    ports:
+      - '2525:2525'
+    command: daphne -b 0.0.0.0 -p 2525 myBazar.asgi:application
+    env_file:
+      - .env
+    volumes:
+      - .:/mybazar
+    links:
+      - db:db
+  db:
+    image: "postgres"
+    env_file:
+      - .env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    command: -p 5432
