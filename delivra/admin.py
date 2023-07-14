@@ -1,5 +1,14 @@
 from django.contrib import admin
-from .models import Product, Order
+from .models import Order
 
-admin.site.register(Product)
-admin.site.register(Order)
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = [
+        "user",
+        "cost",
+        "date",
+        "from_day"
+    ]
+
+
+admin.site.register(Order, OrderAdmin)

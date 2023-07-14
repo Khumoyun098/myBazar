@@ -136,3 +136,8 @@ dmypy.json
 .postgres-data
 /postgres-data
 postgres-data
+
+/static
+./static
+.static
+static
